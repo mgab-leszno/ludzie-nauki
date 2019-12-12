@@ -1,0 +1,34 @@
+<div class="album py-5 bg-light" *ngIf="isLoaded">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of data">
+        <div class="card mb-4 box-shadow">
+          <img
+          *ngIf="item.img !== ''"
+            class="card-img-top top-img-cutout"
+            src="{{ item.img }}"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h3>{{ item.name }}</h3>
+            <p class="text-muted">
+              {{ item.year_born }} - {{ item.year_died }}
+            </p>
+            <div class="mb-2" style="height: 3.6em;">
+              <p class="card-text block-with-text">
+                {{ item.desc_short }}
+              </p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/person/', item.id]">
+                  Czytaj więcej...
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
