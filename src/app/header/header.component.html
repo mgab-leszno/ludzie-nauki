@@ -1,5 +1,9 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark primary-color">
-  <a class="navbar-brand" href="#">{{title}}</a>
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark primary-color py-0">
+  <a class="navbar-brand mr-3" href="#">
+    <div class="badge badge-secondary text-wrapping">
+        {{title}}
+    </div>
+  </a>
 
   <button
     class="navbar-toggler"
@@ -14,9 +18,6 @@
       </li>
       <li class="nav-item" [class.active]="isLinkActive('/entries')">
         <a class="nav-link" [routerLink]="['/entries']">Lista</a>
-      </li>
-      <li class="nav-item" [class.active]="isLinkActive('/about')">
-        <a class="nav-link" [routerLink]="['/about']">O stronie...</a>
       </li>
     </ul>
   </div>

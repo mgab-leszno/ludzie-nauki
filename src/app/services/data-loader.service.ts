@@ -11,7 +11,7 @@ export class DataLoaderService implements OnDestroy {
   constructor(private http: HttpClient) { }
 
   public getJSON(): Observable<any> {
-      return this.http.get('../../assets/figures.json');
+      return this.http.get('assets/figures.json');
   }
 
   ngOnDestroy(): void {
