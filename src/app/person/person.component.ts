@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataLoaderService } from '../services/data-loader.service';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { DataLoaderService } from "../services/data-loader.service";
+import { Subscription } from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: 'app-person',
-  templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+  selector: "app-person",
+  templateUrl: "./person.component.html",
+  styleUrls: ["./person.component.css"]
 })
 export class PersonComponent implements OnInit, OnDestroy {
   $dataSub: Subscription;
@@ -14,15 +14,20 @@ export class PersonComponent implements OnInit, OnDestroy {
   isLoaded = false;
 
   constructor(
-      public dataLoader: DataLoaderService,
-      private route: ActivatedRoute
-    ) { }
+    public dataLoader: DataLoaderService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  goBack(): void {
+    this.router.navigate(["../"], { relativeTo: this.route });
+  }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get("id");
 
     this.$dataSub = this.dataLoader.getJSON().subscribe((data: any) => {
-      this.isLoaded = !(!data);
+      this.isLoaded = !!data;
       this.person = data.entries[+id];
       console.log(this.person);
     });

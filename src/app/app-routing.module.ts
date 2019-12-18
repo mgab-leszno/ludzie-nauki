@@ -7,7 +7,7 @@ import { PersonComponent } from './person/person.component';
 const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'entries', component: EntryListComponent },
-  { path: 'person/:id', component: PersonComponent },
+  { path: 'entries/:id', component: PersonComponent },
   { path: '',
     redirectTo: 'main',
     pathMatch: 'full'
